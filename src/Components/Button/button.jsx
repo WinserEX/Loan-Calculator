@@ -1,8 +1,13 @@
 import Button from 'react-bootstrap/Button';
 
-const ButtonComp = ({variant}) => {
+const ButtonComp = ({variant, buttonText, onClick}) => {
     return (
-        <Button variant={variant}>Submit</Button>
+        <Button 
+            onClick={onClick} 
+            variant={variant}
+        >
+            {buttonText}
+        </Button>
     )
 }
 
