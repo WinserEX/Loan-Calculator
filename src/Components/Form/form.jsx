@@ -1,17 +1,26 @@
 import { Form, Container, Row, Col } from "react-bootstrap";
-import ButtonComp from "../Button/button";
+//import ButtonComp from "../Button/button";
 import './form.css'
 
-const FormComp = ({onClick, state, setState}) => {
+const FormComp = ({state, setState}) => {
+
+    let handleFormula = (prestamo,numCuotas,interes) => {
+        let cuota = ((prestamo*interes)/(1-(1+interes)**(numCuotas*-1)))
+        console.log(`$${parseInt(cuota, 10)}`);
+    }
+
+    function handleClick(e) {
+        e.preventDefault();
+        //setState({ ...state, rows: getAmortizationTable(state.V, state.N, state.i) });
+        handleFormula(parseInt(state.prestamo, 10), parseInt(state.numCuotas, 10), parseInt(state.interes, 10))
+    }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        onClick(
-                parseInt(state.prestamo, 10), 
-                parseInt(state.numCuotas, 10), 
-                parseInt(state.interes, 10)
-                )
+        //parseInt(state.prestamo, 10)
+        //parseInt(state.numCuotas, 10)
+        //parseInt(state.interes, 10)              
     }
+
     console.log(state)
     return (
         <>
@@ -28,20 +37,24 @@ const FormComp = ({onClick, state, setState}) => {
 
                         <Form.Group controlId="cuotas">
                             <Form.Label>Cantidad de Cuotas</Form.Label>
-                            <Form.Control type="number" placeholder="¿Cuántas cuotas?" />
+                            <Form.Control 
+                                type="number" 
+                                placeholder="¿Cuántas cuotas?" 
+                                //value={state.numCuotas}
+                            />
                         </Form.Group>
 
                         <Form.Group controlId="interes">
                             <Form.Label>Porcentaje de Interes</Form.Label>
                             <Form.Control type="number" placeholder="¿Cuántas cuotas?" />
                         </Form.Group>
-                        <button type="submit" onClick={onClick}>Test</button>
-                        <ButtonComp 
+                        <button type="submit" onSubmit={handleSubmit} onClick={handleClick}>Test</button>
+                        {/* <ButtonComp 
                             type="submit" 
                             variant={"primary"} 
                             buttonText={"Calcular"}
                             onClick={handleSubmit} 
-                        />
+                        /> */}
                     </Form>
                 </Row>
             </Container>

@@ -18,21 +18,15 @@ function App() {
   //const [montoPrestamo, setMontoPrestamo] = useState(5000)
   //const [cantidadCuotas, setCantidadCuotas] = useState(24)
   //const [porcentajeInteres, setPorcentajeInteres] = useState(0.3)
-  const [state, setState] = useState({id: "", cuota: "", prestamo: "", numCuotas: "", interes: ""});
-
-  let handleFormula = (v,n,i) => {
-    let c = ((v*i)/(1-(1+i)**(n*-1)))
-    console.log(`$${Math.round(c)}`)
-  }
+  const [state, setState] = useState({id: "", cuota: 0, prestamo: 0, numCuotas: 0, interes: 0});
 
   return (
     <>
       <FormComp 
-        onClick={handleFormula} 
         state={state} 
         setState={setState}
       />
-      
+
       <TableComp 
         id={state.id} 
         prestamo={state.prestamo} 
