@@ -1,5 +1,5 @@
 import { Form, Container, Row, Col } from "react-bootstrap";
-//import ButtonComp from "../Button/button";
+import Button from 'react-bootstrap/Button';
 import './form.css'
 
 const FormComp = ({state, setState}) => {
@@ -64,7 +64,7 @@ const FormComp = ({state, setState}) => {
                                 onChange={(e) => setState({ ...state, interes: e.target.value })}
                             />
                         </Form.Group>
-                        <button type="submit" onSubmit={handleSubmit} onClick={handleClick}>Test</button>
+                        <Button className="primary" type="submit" onSubmit={handleSubmit} onClick={handleClick}>Submit</Button>
                         {/* <ButtonComp 
                             type="submit" 
                             variant={"primary"} 
