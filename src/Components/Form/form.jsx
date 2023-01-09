@@ -4,16 +4,15 @@ import './form.css'
 
 const FormComp = ({state, setState}) => {
 
-    let interesPorcentual = (interes, balance) => {
-        let int2 = (interes*balance)/100
-        let res = `$${parseInt(int2, 10)}`
-        setState({ ...state, int2: res });
-    }
-
     let handleFormula = (prestamo,numCuotas,interes) => {
         let cuota = ((prestamo*interes)/(1-(1+interes)**(numCuotas*-1)))
-        let res = `$${parseInt(cuota, 10)}`
-        setState({ ...state, cuota: res });
+        let balance = prestamo - (cuota/numCuotas)
+        let balInt = `$${parseInt(balance, 10)}`
+        let cuotaInt = `$${parseInt(cuota, 10)}`
+        let montoInteres = (cuotaInt * parseInt(interes, 10)) / 100
+        let mInteInt = `$${parseInt(montoInteres, 10)}`
+        setState({ ...state, cuota: cuotaInt, balance: balInt, id: 1, int2: mInteInt });
+        console.log(balance)
     }
 
     function handleClick(e) {

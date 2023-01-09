@@ -11,8 +11,8 @@ function TableComp({id, prestamo, numCuota, interes, cuota, balance, int2}) {
               <th>Monto Cuota</th>
               <th>Monto de Prestamo</th>
               <th>Cantidad de Cuotas</th>
+              <th>Monto Interes</th>
               <th>Porcentaje de Interes</th>
-              <th>Interes</th>
               <th>Balance</th>           
             </tr>
         </thead>

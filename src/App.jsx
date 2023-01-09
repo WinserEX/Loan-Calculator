@@ -33,6 +33,8 @@ function App() {
         numCuota={state.numCuotas} 
         interes={state.interes}  
         cuota={state.cuota} 
+        balance={state.balance}
+        int2={state.int2}
       />
     </>
   )
