@@ -4,21 +4,24 @@ import './form.css'
 
 const FormComp = ({state, setState}) => {
 
+    const {id, cuota, prestamo, numCuotas, int2, interes, balance} = state
+
     let handleFormula = (prestamo,numCuotas,interes) => {
         let cuota = ((prestamo*interes)/(1-(1+interes)**(numCuotas*-1)))
         let balance = prestamo - (cuota/numCuotas)
         let balInt = `$${parseInt(balance, 10)}`
         let cuotaInt = `$${parseInt(cuota, 10)}`
-        let montoInteres = (cuotaInt * parseInt(interes, 10)) / 100
+        let montoInteres = parseInt((cuotaInt * Number(interes) / 100), 10)
         let mInteInt = `$${parseInt(montoInteres, 10)}`
         setState({ ...state, cuota: cuotaInt, balance: balInt, id: 1, int2: mInteInt });
         console.log(balance)
+        console.log(int2)
     }
 
     function handleClick(e) {
         e.preventDefault();
         //setState({ ...state, rows: getAmortizationTable(state.V, state.N, state.i) });
-        handleFormula(parseInt(state.prestamo, 10), parseInt(state.numCuotas, 10), parseInt(state.interes, 10))
+        handleFormula(parseInt(prestamo, 10), parseInt(numCuotas, 10), parseInt(interes, 10))
     }
 
     const handleSubmit = (e) => {
@@ -39,7 +42,7 @@ const FormComp = ({state, setState}) => {
                             <Form.Control 
                                 type="number" 
                                 placeholder="¿Cuánto dinero?"
-                                value={state.prestamo} 
+                                value={prestamo} 
                                 onChange={(e) => setState({ ...state, prestamo: e.target.value })}
                             />
                         </Form.Group>
@@ -49,7 +52,7 @@ const FormComp = ({state, setState}) => {
                             <Form.Control 
                                 type="number" 
                                 placeholder="¿Cuántas cuotas?" 
-                                value={state.numCuotas}
+                                value={numCuotas}
                                 onChange={(e) => setState({ ...state, numCuotas: e.target.value })}
                             />
                         </Form.Group>
@@ -58,7 +61,7 @@ const FormComp = ({state, setState}) => {
                             <Form.Label>Porcentaje de Interes</Form.Label>
                             <Form.Control 
                                 type="number" 
-                                placeholder="¿Cuántas cuotas?" 
+                                placeholder="Porcentaje de Interes" 
                                 value={state.interes}
                                 onChange={(e) => setState({ ...state, interes: e.target.value })}
                             />

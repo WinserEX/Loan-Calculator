@@ -18,7 +18,16 @@ function App() {
   //const [montoPrestamo, setMontoPrestamo] = useState(5000)
   //const [cantidadCuotas, setCantidadCuotas] = useState(24)
   //const [porcentajeInteres, setPorcentajeInteres] = useState(0.3)
-  const [state, setState] = useState({id: "", cuota: 0, prestamo: 0, numCuotas: 0, interes: 0, balance: 0, int2: 0});
+  const [state, setState] = useState(
+    {
+      id: "", 
+      cuota: 0, 
+      prestamo: 0, 
+      numCuotas: 0, 
+      interes: 0, 
+      balance: 0, 
+      int2: 0
+    });
 
   return (
     <>
@@ -27,7 +36,10 @@ function App() {
         setState={setState}
       />
 
-      <TableComp 
+      <TableComp
+        state={state}
+        setState={setState}
+        /*
         id={state.id} 
         prestamo={state.prestamo} 
         numCuota={state.numCuotas} 
@@ -35,6 +47,7 @@ function App() {
         cuota={state.cuota} 
         balance={state.balance}
         int2={state.int2}
+        */
       />
     </>
   )

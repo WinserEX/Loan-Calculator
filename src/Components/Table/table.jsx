@@ -1,7 +1,8 @@
 import Table from 'react-bootstrap/Table';
 import { Container } from 'react-bootstrap';
 
-function TableComp({id, prestamo, numCuota, interes, cuota, balance, int2}) {
+function TableComp({state}) {
+  const {id, cuota, prestamo, numCuotas, int2, interes, balance} = state
   return (
     <Container>
         <Table striped bordered hover>
@@ -21,7 +22,7 @@ function TableComp({id, prestamo, numCuota, interes, cuota, balance, int2}) {
               <td>{id}</td>
               <td>{cuota}</td>
               <td>{prestamo}</td>
-              <td>{numCuota}</td>
+              <td>{numCuotas}</td>
               <td>{int2}</td>
               <td>{interes}</td>
               <td>{balance}</td>
