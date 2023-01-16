@@ -10,12 +10,10 @@ const FormComp = ({state, setState}) => {
         let cuota = ((prestamo*interes)/(1-(1+interes)**(numCuotas*-1)))
         let balance = prestamo - (cuota/numCuotas)
         let balInt = `$${parseInt(balance, 10)}`
-        let cuotaInt = `$${parseInt(cuota, 10)}`
-        let montoInteres = parseInt((cuotaInt * Number(interes) / 100), 10)
-        let mInteInt = `$${parseInt(montoInteres, 10)}`
+        let cuotaInt = `$${parseFloat(cuota).toFixed(2)}`
+        let montoInteres = (cuota * interes / 100)
+        let mInteInt = `$${parseFloat(montoInteres).toFixed(2)}`
         setState({ ...state, cuota: cuotaInt, balance: balInt, id: 1, int2: mInteInt });
-        console.log(balance)
-        console.log(int2)
     }
 
     function handleClick(e) {
