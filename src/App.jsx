@@ -14,10 +14,6 @@ function App() {
   C = ((V * i)/ (1-(1 + i)**(N * -1)))
   */
 
-  //const [id, setID] = useState(1)
-  //const [montoPrestamo, setMontoPrestamo] = useState(5000)
-  //const [cantidadCuotas, setCantidadCuotas] = useState(24)
-  //const [porcentajeInteres, setPorcentajeInteres] = useState(0.3)
   const [state, setState] = useState(
     {
       id: "", 
@@ -26,8 +22,12 @@ function App() {
       numCuotas: 0, 
       interes: 0, 
       balance: 0, 
-      int2: 0
+      montoInteres: 0,
+      capital: 0
     });
+
+    
+
 
   return (
     <>
