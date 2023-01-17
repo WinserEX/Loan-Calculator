@@ -23,7 +23,8 @@ function App() {
       interes: 0, 
       balance: 0, 
       montoInteres: 0,
-      capital: 0
+      capital: 0,
+      row: {}
     });
 
     

@@ -4,7 +4,7 @@ import './form.css'
 
 const FormComp = ({state, setState}) => {
 
-    const {id, cuota, prestamo, numCuotas, montoInteres, interes, balance, capital} = state
+    const {id, cuota, prestamo, numCuotas, montoInteres, interes, balance, capital, row} = state
 
     let DOP = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -12,15 +12,16 @@ const FormComp = ({state, setState}) => {
     });
 
     let handleFormula = (prestamo,numCuotas,interes) => {
-        let cuota = ((prestamo*interes)/(1-(1+interes)**(numCuotas*-1)))
-        let balance = prestamo - (cuota/numCuotas)
+        let cuota = ((prestamo*(interes/100))/(1-(1+(interes/100))**(numCuotas*-1)))
+        let balance = prestamo - cuota
         let balInt = DOP.format(balance)
-        let cuotaInt = DOP.format(cuota/12)
+        let cuotaInt = DOP.format(cuota)
         let montoInteres = cuota * interes / 100
         let montoInteresInt = DOP.format(montoInteres)
-        let capital = cuota/12 - montoInteres
+        let capital = cuota - montoInteres
         let capitalInt = DOP.format(capital)
         setState({ ...state, cuota: cuotaInt, balance: balInt, id: 1, montoInteres: montoInteresInt, capital: capitalInt});
+
     }
 
     function handleClick(e) {
@@ -38,7 +39,6 @@ const FormComp = ({state, setState}) => {
         //parseInt(state.interes, 10)              
     }
 
-    console.log(state)
     return (
         <>
             <Container className="container">
