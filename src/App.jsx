@@ -24,12 +24,15 @@ function App() {
       balance: 0, 
       montoInteres: 0,
       capital: 0,
-      row: {}
+      row: {
+        cuota: [],
+        capital: [],
+        montoInteres: [],
+        balance: []
+      }
     });
 
-    
-
-
+     
   return (
     <>
       <FormComp 

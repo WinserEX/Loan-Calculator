@@ -14,21 +14,28 @@ const FormComp = ({state, setState}) => {
     let handleFormula = (prestamo,numCuotas,interes) => {
         let cuota = ((prestamo*(interes/100))/(1-(1+(interes/100))**(numCuotas*-1)))
         let balance = prestamo - cuota
-        let balInt = DOP.format(balance)
-        let cuotaInt = DOP.format(cuota)
+        //let balInt = DOP.format(balance)
+        //let cuotaInt = DOP.format(cuota)
         let montoInteres = cuota * interes / 100
-        let montoInteresInt = DOP.format(montoInteres)
+        //let montoInteresInt = DOP.format(montoInteres)
         let capital = cuota - montoInteres
-        let capitalInt = DOP.format(capital)
-        setState({ ...state, cuota: cuotaInt, balance: balInt, id: 1, montoInteres: montoInteresInt, capital: capitalInt});
+        //let capitalInt = DOP.format(capital)
+        //setState({ ...state, cuota: cuotaInt, balance: balInt, id: 1, montoInteres: montoInteresInt, capital: capitalInt});
+        setState({ ...state, cuota: cuota, balance: balance, id: 1, montoInteres: montoInteres, capital: capital});
+    }
 
+    let handleRow = () => {
+        row.cuota.push(cuota)
+        row.capital.push(capital)
+        row.montoInteres.push(montoInteres)
+        row.balance.push(balance)
+        console.log(row)
     }
 
     function handleClick(e) {
         e.preventDefault();
         handleFormula(parseInt(prestamo, 10), parseInt(numCuotas, 10), parseInt(interes, 10))
-        //setState({ ...state, rows: getAmortizationTable(state.V, state.N, state.i) });
-        
+        handleRow();     
     }
 
     const handleSubmit = (e) => {
@@ -38,6 +45,8 @@ const FormComp = ({state, setState}) => {
         //parseInt(state.numCuotas, 10)
         //parseInt(state.interes, 10)              
     }
+
+    
 
     return (
         <>
@@ -69,7 +78,7 @@ const FormComp = ({state, setState}) => {
                             <Form.Control 
                                 type="number" 
                                 placeholder="Porcentaje de Interes" 
-                                value={state.interes}
+                                value={interes}
                                 onChange={(e) => setState({ ...state, interes: e.target.value })}
                             />
                         </Form.Group>
